@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title></title>
+		<style type="text/css">
+			#box{
+				width: 200px;
+				height: 200px;
+				padding: 100px;
+				border: 20px solid black;
+				margin: 10px;
+				background-color: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box"></div>
+		<script type="text/javascript">
+			const box = document.getElementById("box")
+			/* box.style.width,既可以读取也可以操作，但是他操作的仅仅是内联样式，也就是标签中的style属性
+			 如果标签中没有，则读取不到*/
+			console.log(box.clientWidth,box.clientHeight)//400 400
+			console.log(box.offsetWidth,box.offsetHeight)//440 440
+			/* 想要获取非内联的样式，可以使用getComputedStyle */
+			const boxWidth =  getComputedStyle(box).width
+			console.log(boxWidth) //200px
+			/* IE8 */
+			const ieboxWidth = box.currentStyle.width
+			console.log(ieboxWidth)//在非ie浏览中中返回的是undefined,.width会报错
+		</script>
+	</body>
+</html>

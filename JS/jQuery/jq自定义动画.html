@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            .block{
+                position: absolute;
+                width: 200px;
+                height: 200px;
+                background-color: #000;
+            }
+        </style>
+        <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.10.0/jquery.min.js"></script>
+    </head>
+
+    <body>
+        <button id="left">«</button> <button id="right">»</button>
+        <div class="block"></div>
+    </body>
+    <script>
+        $(function ($) {
+            $("#right").click(function () {
+                $(".block").animate({ left: '+500' }, "slow");
+            });
+
+            $("#left").click(function () {
+                $(".block").animate({ left: '-500px' }, "2000");
+            });
+        })
+
+    </script>
+
+</html>

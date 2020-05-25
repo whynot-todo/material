@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<!-- 设置跳转的按钮 -->
+		<button type="button" id="btn">点击跳转</button>
+		<p>窗前明月光</p>
+		<p>窗前明月光</p>
+		<p>窗前明月光</p>
+		<p>窗前明月光</p>
+		<p>窗前明月光</p>
+		<p>窗前明月光</p>
+		<p>窗前明月光</p>
+		<p>窗前明月光</p>
+		<p>窗前明月光</p>
+		<p>窗前明月光</p>
+		<p>窗前明月光</p>
+		<p>窗前明月光</p>
+		<p>窗前明月光</p>
+		<!-- 跳转的锚点 -->
+		<div id="abc">跳转到此处</div>
+		<p>窗前明月光</p>
+		<p>窗前明月光</p>
+		<p>窗前明月光</p>
+		<p>窗前明月光</p>
+		<p>窗前明月光</p>
+		<p>窗前明月光</p>
+		<p>窗前明月光</p>
+		<p>窗前明月光</p>
+		<p>窗前明月光</p>
+		<p>窗前明月光</p>
+		<p>窗前明月光</p>
+		<p>窗前明月光</p>
+		<p>窗前明月光</p>
+		<p>窗前明月光</p>
+		<p>窗前明月光</p>
+		<p>窗前明月光</p>
+		<p>窗前明月光</p>
+		<p>窗前明月光</p>
+		<p>窗前明月光</p>
+		<p>窗前明月光</p>
+		<p>窗前明月光</p>
+		<p>窗前明月光</p>
+		<p>窗前明月光</p>
+		<p>窗前明月光</p>
+		<p>窗前明月光</p>
+		<p>窗前明月光</p>
+		<p>窗前明月光</p>
+		<p>窗前明月光</p>
+		<p>窗前明月光</p>
+		
+	</body>
+	<script type="text/javascript">
+		/* 封装滚动的动画函数 */
+		function animationScroll(currentY,targetY){
+			timer = setInterval(()=>{
+				let diff = Math.abs(currentY - targetY)
+				if(diff < 5){
+					scrollTo(0,targetY)
+					clearInterval(timer)
+				}else if(currentY < targetY){
+					currentY += 5
+					scrollTo(0,currentY)
+				}else if(currentY > targetY){
+					currentY -= 5
+					scrollTo(0,currentY)
+				}
+			},1)
+		}
+		
+		const btn = document.getElementById("btn")
+		btn.onclick = function(){
+			/* 获取currentY */
+			const currentNode = document.getElementById("btn")
+			/* 如果没有父级元素的定位，可以用offsetTop来进行替代getBoundingClientRect()也可以 */
+			const cnPosition = currentNode.getBoundingClientRect()
+			const currentY = cnPosition.top
+			/* 获取targetY */
+			const targetNode = document.getElementById("abc")
+			const tnPosition = targetNode.getBoundingClientRect()
+			const targetY = tnPosition.top
+			/* 调用动画函数进行跳转 */
+			animationScroll(currentY,targetY)
+		}
+	</script>
+</html>

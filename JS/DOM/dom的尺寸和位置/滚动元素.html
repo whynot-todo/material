@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			#wrapper{
+				width: 200px;
+				height: 200px;
+				border: 1px solid black;
+				overflow: auto;/* 让他出现滚动条 */
+			}
+			#inner{
+				width: 400px;
+				height: 400px;
+				background-color: #FF0000;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrapper">
+			<div id="inner">jj</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		const wrapper = document.getElementById("wrapper")
+		const inner = document.getElementById("inner")
+		console.log(inner.scrollWidth)//400
+		console.log(inner.scrollHeight)//400 获取的是包括隐藏的真实高度
+		console.log(wrapper.scrollWidth,wrapper.scrollHeight)//400 获取的也是被撑起来的真实高度
+		
+		/* 为滚动条绑定滚动事件，滚动条在谁身上 */
+		wrapper.onscroll = function(){
+			console.log(wrapper.scrollLeft)
+			console.log(wrapper.scrollTop)
+		}
+		console.log(wrapper.clientHeight)
+
+	</script>
+</html>

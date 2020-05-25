@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			#wrapper{
+				position: absolute;
+				left: 100px;
+				top:50px;
+				width: 400px;
+				height: 400px;
+				background-color: red;
+			}
+			#inner{
+				position: absolute;
+				left: 100px;
+				top: 50px;
+				width: 200px;
+				height: 200px;
+				background-color: aqua;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrapper">
+			<div id="inner"></div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		const wrapper = document.getElementById("wrapper")
+		const inner = document.getElementById("inner")
+		console.log(wrapper.offsetLeft)
+		console.log(wrapper.offsetTop)
+		console.log(inner.offsetLeft)/* 获取的是style中的left */
+		const result = inner.getBoundingClientRect()
+		console.log(result)
+	</script>
+</html>
