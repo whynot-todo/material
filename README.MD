@@ -8,4 +8,7 @@
 + jQuery
     + jq自定义动画 [点击](https://blog.csdn.net/youhebuke225/article/details/106329205)
 	 
-## 2.VUE组件之间的通讯 [详情点击](https://blog.csdn.net/youhebuke225/article/details/106308417)
+## 2.VUE组件之间的通讯 [点击](https://blog.csdn.net/youhebuke225/article/details/106308417)
+
+
+github地址 [点击](https://github.com/whynot-todo/Blog)
