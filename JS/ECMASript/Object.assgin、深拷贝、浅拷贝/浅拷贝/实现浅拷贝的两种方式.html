@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+	/* 方式一 */		
+			/* Object.assign(),深拷贝、浅拷贝
+			 参数一：目标对象
+			 参数二：源对象(需要拷贝的对象)
+			 */
+			const target = {a:1}
+			const object1 = {b:2}
+			const object2 = {c:3}
+			console.log(Object.assign(target,object1,object2))
+			/* {a: 1, b: 2, c: 3} */
+			object1.b = 4
+			object2.c = 5
+			Object.assign(target,object1,object2)
+			console.log(target)
+			/* {a: 1, b: 4, c: 5} */
+	/* 方式二 */				
+			let obj = {d:4}
+			let objCopy = obj
+			console.log(objCopy)
+		</script>
+	</body>
+</html>

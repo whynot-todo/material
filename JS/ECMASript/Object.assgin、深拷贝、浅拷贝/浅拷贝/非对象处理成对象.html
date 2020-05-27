@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/* 基本类型的处理 */
+			const target = Object.assign(3)/* 转化成进本包装类型 */
+			console.log(target)/* Number {3} */
+			console.log(typeof 3 ,typeof target)/* number object */
+			
+			/* 对于数组的处理 */
+			console.log(Object.assign([2,3],[7]))/*  [7, 3] */
+			/* 
+			1.先转化成对象 {0:2,1:3} {0:7}
+			2. 同属性名进行替换
+			 */
+		</script>
+	</body>
+</html>

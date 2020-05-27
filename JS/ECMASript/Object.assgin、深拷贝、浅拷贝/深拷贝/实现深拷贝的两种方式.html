@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+	/* 方式一 */		
+			//JSON.parse(JSON.stringify(obj))
+			const target = {
+				sun: "wukong"
+			}
+			const copyObj = JSON.parse(JSON.stringify(target))
+			console.log(copyObj) /* {sun: "wukong"} */
+			target.sun = "xingzhe"
+			console.log(copyObj) /* {sun: "wukong"} */
+			
+	/* 方式二 */		
+			/* 使用浅拷贝 + 递归 */
+			function copyDeep(obj) {
+				//对于数据类型进行辨别
+				//1.非对象返回本身
+				if (!isObject(obj)) return obj
+				//2.初始化数组或者对象
+				var target = Array.isArray(obj) ? [] : {}
+				//对于对象的处理
+				for (let key in obj) {
+					if (obj.hasOwnProperty(key)) {
+						/* 如果属性是一个对象 */
+						if (isObject(obj[key])) {
+							target[key] = obj[key]
+						} else {
+							target[key] = obj[key]
+						}
+					}
+				}
+				return target
+			}
+
+			function isObject(obj) {
+				/* 注意 null 这个特殊的类型 */
+				return typeof obj === 'object' && obj !== null
+			}
+			
+			const target1 = {a:{b:{c:{d:'d'}}}}
+			const copyObj1 = copyDeep(target1)
+			console.log(copyObj1)//{a:{b:{c:{d:'d'}}}}
+		</script>
+	</body>
+</html>
