@@ -7,8 +7,12 @@
 	+ 深拷贝、浅拷贝、Object.assign() [点击](https://blog.csdn.net/youhebuke225/article/details/106373066)
 + jQuery
     + jq自定义动画 [点击](https://blog.csdn.net/youhebuke225/article/details/106329205)
+
+## 2. CSS
++ CSS布局
+	+ CSS居中方案 [点击](https://blog.csdn.net/youhebuke225/article/details/106329205)
 	 
-## 2.VUE组件之间的通讯 [点击](https://blog.csdn.net/youhebuke225/article/details/106308417)
+## 3.VUE组件之间的通讯 [点击](https://blog.csdn.net/youhebuke225/article/details/106308417)
 
 
 github地址 [点击](https://github.com/whynot-todo/Blog)
