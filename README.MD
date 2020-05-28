@@ -14,6 +14,7 @@
 
 ## 3. Vue
 + Vue基础
+	+ filter使用详解 [点击](https://blog.csdn.net/youhebuke225/article/details/106397558)
 	+ slot使用详解 [点击](https://blog.csdn.net/youhebuke225/article/details/106387830)
 + Vue项目
 	+ Vue组件之间的通讯 [点击](https://blog.csdn.net/youhebuke225/article/details/106308417)
