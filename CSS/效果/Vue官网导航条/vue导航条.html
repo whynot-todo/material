@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="http://at.alicdn.com/t/font_1706329_lkf11zpzyj.css"/>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* 修改a标签的样式 */
+        a {
+            text-decoration: none;
+        }
+
+        a:link {
+            color: #000000;
+        }
+
+        a:visited {
+            color: #000000;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* 头部 */
+        .header {
+            width: 100%;
+            height: 60px;
+            padding: 10px 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #F1F1F1;
+            position: fixed;
+            background-color: #fff;
+            box-sizing: border-box;
+            z-index: 5;
+        }
+
+        /* logo部分 */
+        .header img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 24px;
+        }
+
+        .nav ul {
+            display: flex;
+            align-items: center;
+            height: 40px;
+        }
+
+        /* 搜索框 */
+        /* 去除默认样式 ,给他一个新的样式*/
+        .nav ul input {
+            /* 去除默认样式 */
+            outline: none;
+            /* 新样式 */
+            width: 165px;
+            height: 30px;
+            border-radius: 15px;
+            border: 1px solid #E3E3E3;
+            padding: 0 15px 0 30px;
+            background: url(images/search.png) no-repeat 9px 6px;
+            background-size: 20px;
+            /* 改变输入框中的字体大小 */
+            font-size: 14px !important;
+            color: #41505F;
+            /* 输入时的动画 */
+            transition: border-color ease .5s;
+        }
+
+        /* 输入的时候的时候的边框颜色 */
+        .nav ul input:focus {
+            border-color: #55C090;
+        }
+
+        /* 导航栏 */
+        .nav ul li:not(:first-child) {
+            position: relative;
+            font-size: 16px;
+            margin-left: 40px;
+            line-height: 32px;
+
+        }
+
+        .nav ul a {
+            display: inline-block;
+            line-height: 30px;
+            border-bottom: 3px solid transparent;
+            /* 最后写 */
+            white-space: nowrap;
+        }
+
+        .nva ul li:nth-child(2) a {
+            border-bottom: 3px solid #42b983;
+
+        }
+
+        /* 箭头 */
+        .arrow::after {
+            content: "";
+            display: block;
+            position: absolute;
+            border-top: 5px solid #000;
+            border-bottom: 5px solid transparent;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            right: -15px;
+            top: 50%;
+            margin-left: 20px;
+        }
+
+        /* hover上去的下边框 */
+        .hover:hover {
+            border-bottom: 3px solid #42b983;
+
+        }
+
+        /* 注意放的位置 */
+        .menu {
+            display: none;
+        }
+
+        nav {
+            padding: 10px 0 60px 20px;
+            width: 260px;
+            height: 100vh;
+            overflow: auto;
+            box-sizing: border-box;
+            position: relative;
+            left: 0;
+            transition: .2s linear;
+        }
+
+        @media only screen and (max-width: 992px) {
+            nav {
+                background-color: #F9F9F9;
+                left: -260px;
+            }
+
+            .nav {
+                display: none;
+            }
+
+            .logo {
+                position: absolute;
+                left: 50%;
+                /* 上下的居中不用管 */
+                transform: translateX(-50%);
+            }
+
+            .logo img {
+                width: 30px;
+                height: 30px;
+            }
+
+            .logo span {
+                display: none;
+            }
+
+            .header {
+                height: 40px;
+                padding: 5px 10px;
+            }
+
+            .menu {
+                display: inline-block;
+            }
+
+            .menu img {
+                width: 20px;
+                height: 24px;
+            }
+        }
+
+        /* 左部导航栏 */
+
+        .nav-header {
+            display: flex;
+            align-items: baseline;
+
+        }
+
+
+        .nav-header h2 {
+            margin-right: 10px;
+
+        }
+
+        .nav-main li {
+            color: #4f5959;
+        }
+
+        .nav-main h3 {
+            margin: 20px 0;
+        }
+
+        .nav-main li {
+            line-height: 30px;
+        }
+
+        .nav-main li a:hover {
+            border-bottom: 3px solid #42b983;
+        }
+    </style>
+</head>
+
+<body>
+<header class="header">
+    <div class="menu"><img src="./images/menu.png" alt=""></div>
+    <a href="#" class="logo">
+        <img src="./images/logo.png" alt="">
+        <span>Vue.js</span>
+    </a>
+    <div class="nav">
+        <ul>
+            <li><input type="text"></li>
+            <li><a class="arrow" href="#">学习</a></li>
+            <li><a class="arrow" href="#">生态系统</a></li>
+            <li><a class="hover" href="#">团队</a></li>
+            <li><a class="arrow" href="#">资源列表</a></li>
+            <li><a class="arrow" href="#">支持Vue</a></li>
+            <li><a class="arrow" href="#">多语言</a></li>
+            <li><a class="hover" href="#">参与翻译</a></li>
+        </ul>
+    </div>
+</header>
+<nav>
+    <div class="nav-header">
+        <h2>教程</h2>
+        <select name="" id="">
+            <option value="">2.x</option>
+            <option value="">1.0</option>
+            <option value="">0.12</option>
+            <option value="">0.11</option>
+        </select>
+    </div>
+    <div class="nav-main">
+        <h3>基础</h3>
+        <ul>
+            <li><a href="#">模板语法</a></li>
+            <li><a href="#">模板语法</a></li>
+            <li><a href="#">模板语法</a></li>
+            <li><a href="#">渲染函数 & JSX</a></li>
+            <li><a href="#">模板语法</a></li>
+            <li><a href="#">渲染函数 & JSX</a></li>
+            <li><a href="#">模板语法</a></li>
+            <li><a href="#">模板语法</a></li>
+            <li><a href="#">模板语法</a></li>
+            <li><a href="#">渲染函数 & JSX</a></li>
+            <li><a href="#">模板语法</a></li>
+        </ul>
+        <h3>基础</h3>
+        <ul>
+            <li><a href="#">渲染函数 & JSX</a></li>
+            <li><a href="#">模板语法</a></li>
+            <li><a href="#">模板语法</a></li>
+            <li><a href="#">渲染函数 & JSX</a></li>
+            <li><a href="#">模板语法</a></li>
+            <li><a href="#">渲染函数 & JSX</a></li>
+            <li><a href="#">模板语法</a></li>
+            <li><a href="#">模板语法</a></li>
+            <li><a href="#">渲染函数 & JSX</a></li>
+            <li><a href="#">模板语法</a></li>
+            <li><a href="#">模板语法</a></li>
+        </ul>
+        <h3>基础</h3>
+        <ul>
+            <li><a href="#">模板语法</a></li>
+            <li><a href="#">模板语法</a></li>
+            <li><a href="#">模板语法</a></li>
+            <li><a href="#">渲染函数 & JSX</a></li>
+            <li><a href="#">模板语法</a></li>
+            <li><a href="#">模板语法</a></li>
+            <li><a href="#">模板语法</a></li>
+            <li><a href="#">模板语法</a></li>
+            <li><a href="#">渲染函数 & JSX</a></li>
+            <li><a href="#">模板语法</a></li>
+            <li><a href="#">模板语法</a></li>
+        </ul>
+        <h3>基础</h3>
+        <ul>
+            <li><a href="#">模板语法</a></li>
+            <li><a href="#">渲染函数 & JSX</a></li>
+            <li><a href="#">模板语法</a></li>
+            <li><a href="#">模板语法</a></li>
+            <li><a href="#">模板语法</a></li>
+            <li><a href="#">模板语法</a></li>
+            <li><a href="#">模板语法</a></li>
+            <li><a href="#">渲染函数 & JSX</a></li>
+            <li><a href="#">渲染函数 & JSX</a></li>
+            <li><a href="#">模板语法</a></li>
+            <li><a href="#">模板语法</a></li>
+        </ul>
+        <h3>基础</h3>
+        <ul>
+            <li><a href="#">渲染函数 & JSX</a></li>
+            <li><a href="#">模板语法</a></li>
+            <li><a href="#">模板语法</a></li>
+            <li><a href="#">模板语法</a></li>
+            <li><a href="#">模板语法</a></li>
+            <li><a href="#">模板语法</a></li>
+            <li><a href="#">模板渲染函数 & JSX语法</a></li>
+            <li><a href="#">模板语法</a></li>
+            <li><a href="#">模板语法</a></li>
+            <li><a href="#">模板语法</a></li>
+            <li><a href="#">模板语法</a></li>
+        </ul>
+    </div>
+</nav>
+</body>
+<script type="text/javascript">
+    const vh = document.documentElement.clientHeight
+    console.log(vh)
+    const nav = document.getElementsByTagName('nav')[0]
+    const navHeight = getComputedStyle(nav).height
+    console.log(navHeight)
+    /*注意声明变量的位置*/
+    let flag
+    $($('.menu')[0]).click(function () {
+       /* let flag = 'none'
+        flag === 'none' ? 'block' : 'none'
+        console.log($('nav'))*/
+        flag = flag === '0' ? '-260px' :'0'
+        console.log(flag)
+        $($('nav')[0]).css('left', flag)
+    })
+
+</script>
+
+</html>
