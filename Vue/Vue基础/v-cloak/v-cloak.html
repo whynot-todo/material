@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title></title>
+		<style type="text/css">
+			[v-cloak]{
+				/* 写完之后，一定要重新打开一个页面 */
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<h2>v-cloak test</h2>
+			<p v-cloak>{{message}}</p>
+		</div>		
+		<script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.5/vue.js"></script>
+		<script type="text/javascript">
+			alert('coco')
+			new Vue({
+				el:'#app',
+				data:{
+					message:'look at me'
+				}
+			})
+		</script>
+	</body>
+</html>
