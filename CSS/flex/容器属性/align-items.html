@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			.wrapper{
+				width: 500px;
+				height: 300px;
+				border: 1px solid black;
+				display: flex;
+				/* align-items: baseline; */
+				/* align-items: center; */
+				/* align-items: flex-end; */
+			}
+			.inner{
+				font-weight: bold;
+				color: white;
+				text-align: center;
+				line-height: 100px;
+				font-size: 40px
+			}
+			.inner:nth-child(even){
+				width: 100px;
+				height: 100px;
+				background-color: red;
+			}
+			.inner:nth-child(odd){
+				width: 100px;
+				height: 200px;
+				line-height: 200px;/* 修改文字的垂直位置 */
+				background-color: #000000;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrapper">
+			<div class="inner">1</div>
+			<div class="inner">2</div>
+			<div class="inner">3</div>
+			<div class="inner">4</div>
+		</div>
+	</body>
+</html>

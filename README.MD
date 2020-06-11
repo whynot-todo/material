@@ -13,6 +13,7 @@
 	+ Vue官网响应式导航条
 + CSS布局
 	+ CSS居中方案 [点击](https://blog.csdn.net/youhebuke225/article/details/106329205)
+	+ flex布局详解 [点击](https://blog.csdn.net/youhebuke225/article/details/106414855)
 
 ## 3. Vue
 + Vue基础
