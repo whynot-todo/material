@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" type="text/css" href="index.css" />
+		<title>Document</title>
+	</head>
+
+	<body>
+		<section class="wrapper">
+			<ul class="carousel">
+				<li class="active"><img src="./images/1.jpg" alt=""></li>
+				<li><img src="./images/2.jpg" alt=""></li>
+				<li><img src="./images/3.jpg" alt=""></li>
+				<li><img src="./images/4.jpg" alt=""></li>
+			</ul>
+			<ul class="indication">
+				<li class="active"></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+		</section>
+	</body>
+	<script>
+		const indicLiNodes = document.querySelectorAll('.wrapper > .indication > li')
+		const CarliNodes = document.querySelectorAll('.wrapper > .carousel > li')
+		const carouselNode = document.querySelector('.carousel')
+		/* autoIndex 为执行动画的， oldIndex 为同时执行动画的另一张 */
+		let autoIndex = 0
+		let oldIndex = 0
+		let setIntervalId = ''
+		/* 将轮播图代码封装成一个函数 */
+		carouselPlay()
+		function carouselPlay() {
+			/* 在开启定时器之前清除定时器 */
+			clearInterval(setIntervalId)
+			setIntervalId = setInterval(() => {
+				console.log(autoIndex)
+				autoIndex++
+				/* autoIndex 不能一直增加 */
+				if (autoIndex === CarliNodes.length) {
+					autoIndex = 0
+				}
+
+				for (let index = 0; index < indicLiNodes.length; index++) {
+					indicLiNodes[index].classList.remove('active')
+				}
+
+				indicLiNodes[autoIndex].classList.add('active')
+
+				CarliNodes[autoIndex].classList.remove('leftShow')
+				CarliNodes[autoIndex].classList.remove('leftHide')
+				CarliNodes[autoIndex].classList.remove('rightHide')
+				CarliNodes[autoIndex].classList.add('rightShow')
+
+				CarliNodes[oldIndex].classList.remove('leftShow')
+				CarliNodes[oldIndex].classList.remove('rightShow')
+				CarliNodes[oldIndex].classList.remove('rightHide')
+				CarliNodes[oldIndex].classList.add('leftHide')
+				/* 新执行动画的变成旧的执行动画 */
+				oldIndex = autoIndex
+				/* 定时器时间 - 执行动画使劲啊 = 照片停留时间 */
+			}, 4000)
+		}
+
+
+		for (let index = 0; index < indicLiNodes.length; index++) {
+			const element = indicLiNodes[index];
+			/* 指示点样式 */
+			element.onclick = function () {
+				console.log('click')
+				clearInterval(setIntervalId)
+				for (let index = 0; index < indicLiNodes.length; index++) {
+					indicLiNodes[index].classList.remove('active')
+				}
+				this.classList.add('active')
+				/* 轮播图跳转 */
+				if (index > oldIndex) {
+					CarliNodes[index].classList.remove('rightHide')
+					CarliNodes[index].classList.remove('leftHide')
+					CarliNodes[index].classList.remove('leftShow')
+					CarliNodes[index].classList.add('rightShow')
+
+					CarliNodes[oldIndex].classList.remove('leftShow')
+					CarliNodes[oldIndex].classList.remove('rightHide')
+					CarliNodes[oldIndex].classList.remove('rightShow')
+					CarliNodes[oldIndex].classList.add('leftHide')
+				}
+				if (index < oldIndex) {
+					CarliNodes[index].classList.remove('rightHide')
+					CarliNodes[index].classList.remove('leftHide')
+					CarliNodes[index].classList.remove('rightShow')
+					CarliNodes[index].classList.add('leftShow')
+
+					CarliNodes[oldIndex].classList.remove('leftHide')
+					CarliNodes[oldIndex].classList.remove('leftShow')
+					CarliNodes[oldIndex].classList.remove('rightShow')
+					CarliNodes[oldIndex].classList.add('rightHide')
+				}
+				oldIndex = index
+				autoIndex = index
+			}
+		}
+
+/* 		carouselNode.onmouseenter = function () {
+			clearInterval(setIntervalId)
+		}
+		carouselNode.onmouseleave = function () {
+			carouselPlay()
+		} */
+	</script>
+
+</html>

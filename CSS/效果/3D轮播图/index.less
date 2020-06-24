@@ -1,0 +1,95 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+/* 去除滚动条 */
+html,body{
+    height: 100%;
+    overflow: hidden;
+}
+ul{
+    list-style: none;
+}
+.wrapper{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background-color:red;
+}
+.carousel{
+    height: 100%;
+    //开启3d效果
+    perspective: 2000px;
+    transform-style: preserve-3d;
+    li{
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        visibility: hidden;
+        // 避免折叠
+        &.active{
+            visibility: visible;
+        }
+        // 第一对
+        &.leftShow{visibility: visible;animation:2s leftShow 1 linear;}
+        &.rightHide{visibility: hidden;animation:2s rightHide 1 linear;}
+        // 第二对
+        &.leftHide{visibility: hidden ;animation:2s leftHide 1 linear;}
+        &.rightShow{visibility: visible;animation:2s rightShow 1 linear;}
+        img{
+            display: block;
+            width: 100%;
+            height: 100%;
+            border-radius: 40px;
+        }
+    }
+}
+
+
+
+
+@keyframes leftHide {
+    0% {visibility: visible;}
+    50%{transform: translateX(-40%) rotateY(30deg)  scale(.8);}
+    100%{transform: translateZ(-1500px);}
+}
+
+@keyframes rightShow {
+    0% {visibility: hidden; transform: translateZ(-1500px);}
+    50%{transform: translateX(40%) rotateY(-30deg) scale(.8);}
+    100%{}
+}					
+
+@keyframes leftShow{
+    0%{visibility: hidden;transform: translateZ(-1500px);}
+    50%{transform: translateX(-40%) rotateY(30deg) scale(.8);}
+    100%{}
+}
+
+@keyframes rightHide{
+    0%{visibility: visible;}
+    50%{transform: translateX(40%) rotateY(-30deg) scale(.8);}
+    100%{transform: translateZ(-1500px);}
+}
+
+/* 指示点 */
+.indication{
+    position: absolute;
+    left: 50%;
+    bottom: 50px;
+    display: flex;
+    transform: translateX(-50%);
+    li{
+        width: 60px;
+        height: 60px;
+        background-color:rgba(225, 225, 225, .5);
+        border-radius: 50%;
+        margin-right: 15px;
+        box-shadow: 0 0 4px rgba(25, 25, 25, 0.8);
+        &.active{
+            background-color: #fff;
+        }
+    }
+}
