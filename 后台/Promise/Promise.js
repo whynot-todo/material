@@ -6,7 +6,7 @@
   const PENDING = 'pending'
   const RESOLVED = 'resolved'
   const REJECTED = 'rejected'
-  
+
   /* 
   Promise构造函数
   excutor: 执行器函数(同步执行)
@@ -18,9 +18,9 @@
     self.data = undefined // 给promise对象指定一个用于存储结果数据的属性
     self.callbacks = [] // 每个元素的结构: { onResolved() {}, onRejected() {}}
 
-    function resolve (value) {
+    function resolve(value) {
       // 如果当前状态不是pending, 直接结束
-      if (self.status!==PENDING) {
+      if (self.status !== PENDING) {
         return
       }
 
@@ -29,19 +29,19 @@
       // 保存value数据
       self.data = value
       // 如果有待执行callback函数, 立即异步执行回调函数onResolved
-      if (self.callbacks.length>0) {
+      if (self.callbacks.length > 0) {
         setTimeout(() => { // 放入队列中执行所有成功的回调
           self.callbacks.forEach(calbacksObj => {
             calbacksObj.onResolved(value)
-          }) 
+          })
         });
       }
 
     }
 
-    function reject (reason) {
+    function reject(reason) {
       // 如果当前状态不是pending, 直接结束
-      if (self.status!==PENDING) {
+      if (self.status !== PENDING) {
         return
       }
 
@@ -50,22 +50,22 @@
       // 保存value数据
       self.data = reason
       // 如果有待执行callback函数, 立即异步执行回调函数onRejected
-      if (self.callbacks.length>0) {
+      if (self.callbacks.length > 0) {
         setTimeout(() => { // 放入队列中执行所有成功的回调
           self.callbacks.forEach(calbacksObj => {
             calbacksObj.onRejected(reason)
-          }) 
+          })
         });
       }
     }
-    
+
     // 立即同步执行excutor
     try {
       excutor(resolve, reject)
     } catch (error) { // 如果执行器抛出异常, promise对象变为rejected状态
       reject(error)
     }
-    
+
   }
 
   /* 
@@ -79,12 +79,35 @@
     const self = this
 
     // 指定回调函数的默认值(必须是函数)
-    onResolved = typeof onResolved==='function' ? onResolved : value => value
-    onRejected = typeof onRejected==='function' ? onRejected : reason => {throw reason}
+    onResolved = typeof onResolved === 'function' ? onResolved : value => value
+    onRejected = typeof onRejected === 'function' ? onRejected : reason => { throw reason }
 
 
     // 返回一个新的promise
     return new Promise((resolve, reject) => {
+      // 根据状态来确定调用then中传递的回调函数
+      // 当前promise的状态是resolved
+      if (self.status === RESOLVED) {
+        // 立即异步执行成功的回调函数
+        setTimeout(() => {
+          handle(onResolved)
+        })
+      } else if (self.status === REJECTED) { // 当前promise的状态是rejected
+        // 立即异步执行失败的回调函数
+        setTimeout(() => {
+          handle(onRejected)
+        })
+      } else { // 当前promise的状态是pending
+        // 将成功和失败的回调函数保存callbacks容器中缓存起来
+        self.callbacks.push({
+          onResolved(value) {
+            handle(onResolved)
+          },
+          onRejected(reason) {
+            handle(onRejected)
+          }
+        })
+      }
 
       /* 
       执行指定的回调函数
@@ -115,39 +138,18 @@
         }
       }
 
-      // 当前promise的状态是resolved
-      if (self.status===RESOLVED) {
-        // 立即异步执行成功的回调函数
-        setTimeout(() => {
-          handle(onResolved)
-        })
-      } else if (self.status===REJECTED) { // 当前promise的状态是rejected
-        // 立即异步执行失败的回调函数
-        setTimeout(() => {
-          handle(onRejected)
-        })
-      } else { // 当前promise的状态是pending
-        // 将成功和失败的回调函数保存callbacks容器中缓存起来
-        self.callbacks.push({
-          onResolved (value) {
-            handle(onResolved)
-          },
-          onRejected (reason) {
-            handle(onRejected)
-          }
-        })
-      }
+
     })
   }
-/* 
-  function fn(event) {
-    
-  }
-  div.onclick = function (event){
-    fn(event)
-  }
-  div.onclick = fn
- */
+  /* 
+    function fn(event) {
+      
+    }
+    div.onclick = function (event){
+      fn(event)
+    }
+    div.onclick = fn
+   */
   /* 
   Promise原型对象的catch()
   指定失败的回调函数
@@ -190,7 +192,7 @@
   */
   Promise.all = function (promises) {
     // 用来保存所有成功value的数组
-    const values = new Array(promises.length) 
+    const values = new Array(promises.length)
     // 用来保存成功promise的数量
     let resolvedCount = 0
     // 返回一个新的promise
@@ -205,7 +207,7 @@
             values[index] = value
 
             // 如果全部成功了, 将return的promise改变成功
-            if (resolvedCount===promises.length) {
+            if (resolvedCount === promises.length) {
               resolve(values)
             }
 
