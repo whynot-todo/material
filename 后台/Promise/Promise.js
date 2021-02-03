@@ -97,7 +97,7 @@
         setTimeout(() => {
           handle(onRejected)
         })
-      } else { // 当前promise的状态是pending
+      } else { // 当前promise的状态是pending，兼容promise先指定回调函数
         // 将成功和失败的回调函数保存callbacks容器中缓存起来
         self.callbacks.push({
           onResolved(value) {
