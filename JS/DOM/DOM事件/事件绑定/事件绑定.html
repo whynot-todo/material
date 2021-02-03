@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div onclick="alert('i love you')" >点我一下</div>
+		<div id="domZero">点我一下domZero</div>
+		<script type="text/javascript">
+			const domZero = document.getElementById("domZero")
+			domZero.onclick = function(){
+				alert('i love you ,too')
+			}
+		</script>
+	</body>
+</html>

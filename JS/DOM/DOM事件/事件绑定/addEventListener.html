@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="domTwo">点我一下</div>
+		<script type="text/javascript">
+			/* 绑定多个事件依次执行 */
+			const domTwo = document.getElementById("domTwo")
+			domTwo.addEventListener("click",function(){
+				console.log("我出现的第一次")
+			})
+			domTwo.addEventListener("click",function(){
+				console.log("我出现的第二次")
+			})
+			domTwo.addEventListener("click",function(){
+				console.log("我出现的第三次")
+			})
+		</script>
+	</body>
+</html>
